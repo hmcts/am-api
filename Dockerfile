@@ -1,6 +1,6 @@
 FROM hmcts/cnp-java-base:openjdk-jre-8-slim-stretch-1.0
 
-ENV APP spring-boot-template.jar
+ENV APP am-api.jar
 ENV APPLICATION_TOTAL_MEMORY 1024M
 ENV APPLICATION_SIZE_ON_DISK_IN_MB 41
 ENV JAVA_OPTS ""
