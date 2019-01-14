@@ -1,0 +1,19 @@
+#!groovy
+
+@Library("Infrastructure")
+
+def type = "java"
+def product = "am"
+def component = "api"
+
+withPipeline(type, product, component) {
+
+    after('checkout') {
+        echo 'am-api checked out'
+    }
+
+    before('buildinfra:prod') {
+      currentBuild.description = "Success!"
+      error 'Access management project should not be built on prod environment yet.'
+  }
+}
