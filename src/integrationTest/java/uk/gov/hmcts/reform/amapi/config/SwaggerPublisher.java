@@ -8,8 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,8 +37,9 @@ public class SwaggerPublisher {
             .getResponse()
             .getContentAsByteArray();
 
-        FileOutputStream outputStream = new FileOutputStream("/tmp/swagger-specs.json");
+        OutputStream outputStream = Files.newOutputStream(Paths.get("/tmp/swagger-specs.json"));
         outputStream.write(specs);
         outputStream.close();
+        assertNotNull(outputStream, "Swagger spec does not exist");
     }
 }
