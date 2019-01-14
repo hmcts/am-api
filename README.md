@@ -1,12 +1,10 @@
 # Spring Boot application template
 
-[![Build Status](https://travis-ci.org/hmcts/spring-boot-template.svg?branch=master)](https://travis-ci.org/hmcts/spring-boot-template)
+[![Build Status]( https://travis-ci.org/hmcts/am-api?branch=master)]( https://travis-ci.org/hmcts/am-api)
 
 ## Purpose
 
-The purpose of this template is to speed up the creation of new Spring applications within HMCTS
-and help keep the same standards across multiple teams. If you need to create a new app, you can
-simply use this one as a starting point and build on top of it.
+Access management web service 
 
 ## What's inside
 
@@ -21,8 +19,8 @@ The template is a working application with a minimal setup. It contains:
  * Hystrix circuit breaker enabled
  * MIT license and contribution information
 
-The application exposes health endpoint (http://localhost:4550/health) and metrics endpoint
-(http://localhost:4550/metrics).
+The application exposes health endpoint (http://localhost:2703/health) and metrics endpoint
+(http://localhost:2703/metrics).
 
 ## Plugins
 
