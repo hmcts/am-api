@@ -173,11 +173,6 @@ dependencies {
   smokeTestCompile sourceSets.main.runtimeClasspath
 }
 
-test {
-  useJUnitPlatform()
-  failFast = true
-}
-
 mainClassName = 'uk.gov.hmcts.reform.amapi.Application'
 
 bootJar {
