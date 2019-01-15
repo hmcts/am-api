@@ -2,6 +2,7 @@ plugins {
   id 'application'
   id 'checkstyle'
   id 'pmd'
+  id 'java'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
   id 'org.springframework.boot' version '2.1.0.RELEASE'
@@ -16,6 +17,8 @@ version = '0.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+apply plugin: 'java'
+
 sourceSets {
   functionalTest {
     java {
@@ -24,6 +27,14 @@ sourceSets {
       srcDir file('src/functionalTest/java')
     }
     resources.srcDir file('src/functionalTest/resources')
+  }
+
+  test {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/test/java')
+    }
   }
 
   integrationTest {
