@@ -20,3 +20,12 @@ module "am-api" {
     LOGBACK_REQUIRE_ERROR_CODE  = "false"
   }
 }
+
+resource "azurerm_resource_group" "rg" {
+  name     = "${var.product}-${var.env}"
+  location = "${var.location_app}"
+
+  tags = "${merge(var.common_tags,
+      map("lastUpdated", "${timestamp()}")
+      )}"
+}
