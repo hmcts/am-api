@@ -43,7 +43,7 @@ spec:
               memory: "1024Mi"
               cpu: "2500m"
           ports:
-            - containerPort: 8093
+            - containerPort: 2703
               name: http
           imagePullPolicy: Always
         #
@@ -85,7 +85,7 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 8093
+      targetPort: 2703
   selector:
     app: ${SERVICE_NAME}
 ---
