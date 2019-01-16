@@ -14,7 +14,10 @@ module "am-api" {
   ilbIp               = "${var.ilbIp}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   subscription        = "${var.subscription}"
-  capacity            = "${var.capacity}"
+  is_frontend         = "${var.external_host_name != "" ? "1" : "0"}"
+  additional_host_name = "${var.external_host_name != "" ? var.external_host_name : "null"}"
+  capacity            = "1"
+  instance_size       = "I2"
   common_tags         = "${var.common_tags}"
 
   app_settings = {
@@ -30,7 +33,7 @@ module "postgres-am-api" {
   location            = "${var.location_app}"
   postgresql_user     = "${var.db_user}"
   database_name       = "${var.db_name}"
-  postgresql_version  = "10"
+  postgresql_version  = "11.1"
   common_tags         = "${var.common_tags}"
 }
 

@@ -62,3 +62,7 @@ variable "deployment_namespace" {
   type        = "string"
   default     = ""
 }
+
+variable "external_host_name" {
+  default = ""
+}
