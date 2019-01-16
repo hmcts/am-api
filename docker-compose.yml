@@ -20,6 +20,9 @@ services:
         - https_proxy
         - no_proxy
     image: hmcts/am-api
+    container_name: am-api
+    depends_on:
+      - am-api-db
     environment:
       # these environment variables are used by java-logging library
       - ROOT_APPENDER

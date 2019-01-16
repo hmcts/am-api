@@ -8,6 +8,15 @@ def component = "api"
 
 withPipeline(type, product, component) {
 
+    echo env.CHANGE_TITLE
+    if (env.CHANGE_TITLE && !env.CHANGE_TITLE.contains('[PREVIEW]')
+            && env.CHANGE_TITLE.contains('[AKS]')) {
+        loadVaultSecrets(secrets)
+        setVaultName('am')
+        enableDockerBuild()
+        enableDeployToAKS()
+    }
+
     after('checkout') {
         echo 'am-api checked out'
     }
