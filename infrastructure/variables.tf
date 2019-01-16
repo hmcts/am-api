@@ -1,5 +1,7 @@
 variable "product" {
   type    = "string"
+  default     = "am"
+  description = "Access Management"
 }
 
 variable "component" {
@@ -29,13 +31,13 @@ variable "common_tags" {
 
 variable "db_user" {
   type        = "string"
-  default     = "snlnotes"
+  default     = "amuser"
   description = "Database user name"
 }
 
 variable "db_name" {
   type        = "string"
-  default     = "snlnotesdb"
+  default     = "am"
   description = "Database name"
 }
 

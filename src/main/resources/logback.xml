@@ -26,12 +26,7 @@
         </encoder>
     </appender>
 
-    <appender name="aiAppender"
-              class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
-    </appender>
-
     <root level="INFO">
-        <appender-ref ref="aiAppender" />
         <appender-ref ref="rolling" />
         <appender-ref ref="STDOUT" />
     </root>
