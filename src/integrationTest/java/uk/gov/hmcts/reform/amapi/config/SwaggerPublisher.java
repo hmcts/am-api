@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.amapi.functional.config;
+package uk.gov.hmcts.reform.amapi.config;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

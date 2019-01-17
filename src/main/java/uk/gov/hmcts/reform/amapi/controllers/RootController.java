@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.amapi.functional.controllers;
+package uk.gov.hmcts.reform.amapi.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

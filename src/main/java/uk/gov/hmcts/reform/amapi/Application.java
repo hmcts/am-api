@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.amapi.functional;
+package uk.gov.hmcts.reform.amapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
