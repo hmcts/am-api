@@ -33,7 +33,7 @@ module "postgres-am-api" {
   location            = "${var.location_app}"
   postgresql_user     = "${var.db_user}"
   database_name       = "${var.db_name}"
-  postgresql_version  = "11.1"
+  postgresql_version  = "10"
   common_tags         = "${var.common_tags}"
 }
 
