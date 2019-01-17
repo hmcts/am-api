@@ -12,7 +12,6 @@ module "am-api" {
   location            = "${var.location_app}"
   env                 = "${var.env}"
   ilbIp               = "${var.ilbIp}"
-  resource_group_name = "${azurerm_resource_group.rg.name}"
   subscription        = "${var.subscription}"
   is_frontend         = "${var.external_host_name != "" ? "1" : "0"}"
   additional_host_name = "${var.external_host_name != "" ? var.external_host_name : "null"}"
@@ -45,7 +44,6 @@ module "am-vault-api" {
   env = "${var.env}"
   tenant_id = "${var.tenant_id}"
   object_id = "${var.jenkins_AAD_objectId}"
-  resource_group_name = "${azurerm_resource_group.rg.name}"
   product_group_object_id = "${var.product_group_object_id}"
 }
 
@@ -79,12 +77,3 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
   vault_uri = "${module.am-vault-api.key_vault_uri}"
 }
 # endregion
-
-resource "azurerm_resource_group" "rg" {
-  name     = "${var.product}-${var.component}-${var.env}"
-  location = "${var.location_app}"
-
-  tags = "${merge(var.common_tags,
-      map("lastUpdated", "${timestamp()}")
-      )}"
-}
