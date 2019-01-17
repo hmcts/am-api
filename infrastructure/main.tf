@@ -19,8 +19,6 @@ module "am-api" {
   capacity            = "1"
   instance_size       = "I2"
   common_tags         = "${var.common_tags}"
-  asp_rg              =  "${azurerm_resource_group.rg.name}"
-  asp_name            =  "${azurerm_resource_group.rg.name}"
 
   app_settings = {
     LOGBACK_REQUIRE_ALERT_LEVEL = "false"
@@ -83,7 +81,7 @@ resource "azurerm_key_vault_secret" "POSTGRES_DATABASE" {
 # endregion
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${var.product}-${var.env}"
+  name     = "${var.product}-${var.component}-${var.env}"
   location = "${var.location_app}"
 
   tags = "${merge(var.common_tags,
