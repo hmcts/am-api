@@ -78,7 +78,7 @@ task smoke(type: Test) {
   classpath = sourceSets.functional.runtimeClasspath
 
   useJUnit {
-    includeCategories 'SmokeTest'
+    includeCategories 'uk.gov.hmcts.reform.amapi.functional.SmokeTest'
   }
 }
 
