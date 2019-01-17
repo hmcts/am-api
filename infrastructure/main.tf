@@ -19,6 +19,8 @@ module "am-api" {
   capacity            = "1"
   instance_size       = "I2"
   common_tags         = "${var.common_tags}"
+  asp_rg              =  "${azurerm_resource_group.rg.name}"
+  asp_name            =  "${azurerm_resource_group.rg.name}"
 
   app_settings = {
     LOGBACK_REQUIRE_ALERT_LEVEL = "false"
