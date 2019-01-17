@@ -1,6 +1,6 @@
 variable "product" {
   type    = "string"
-  default     = "am-api"
+  default     = "am"
   description = "Access Management"
 }
 
