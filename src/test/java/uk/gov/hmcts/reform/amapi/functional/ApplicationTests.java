@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.amapi;
+package uk.gov.hmcts.reform.amapi.functional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

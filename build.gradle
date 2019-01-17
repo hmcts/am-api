@@ -20,13 +20,16 @@ targetCompatibility = 1.8
 apply plugin: 'java'
 
 sourceSets {
-  functionalTest {
+  test {
+    java.srcDir 'src/test/java'
+  }
+  functional {
     java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/functionalTest/java')
+      compileClasspath += main.output + test.output
+      runtimeClasspath += main.output + test.output
+      srcDir file('src/test/functional/java')
     }
-    resources.srcDir file('src/functionalTest/resources')
+    resources.srcDir file('src/test/resources')
   }
 
   test {
@@ -45,15 +48,6 @@ sourceSets {
     }
     resources.srcDir file('src/integrationTest/resources')
   }
-
-  smokeTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/smokeTest/java')
-    }
-    resources.srcDir file('src/smokeTest/resources')
-  }
 }
 
 tasks.withType(JavaCompile) {
@@ -61,8 +55,8 @@ tasks.withType(JavaCompile) {
 }
 
 task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
-  testClassesDirs = sourceSets.functionalTest.output.classesDirs
-  classpath = sourceSets.functionalTest.runtimeClasspath
+  testClassesDirs = sourceSets.functional.output.classesDirs
+  classpath = sourceSets.functional.runtimeClasspath
 }
 
 task integration(type: Test, description: 'Runs the integration tests.', group: 'Verification') {
@@ -73,10 +67,19 @@ task integration(type: Test, description: 'Runs the integration tests.', group: 
   // environment("APPINSIGHTS_INSTRUMENTATIONKEY", "test-key")
 }
 
+configurations {
+  functionalCompile.extendsFrom testCompile
+  functionalRuntime.extendsFrom testRuntime
+}
+
 task smoke(type: Test) {
   description = "Runs Smoke Tests"
-  testClassesDirs = sourceSets.smokeTest.output.classesDirs
-  classpath = sourceSets.smokeTest.runtimeClasspath
+  testClassesDirs = sourceSets.functional.output.classesDirs
+  classpath = sourceSets.functional.runtimeClasspath
+
+  useJUnit {
+    includeCategories 'SmokeTest'
+  }
 }
 
 checkstyle {
@@ -88,7 +91,7 @@ checkstyle {
 
 pmd {
   toolVersion = "6.9.0"
-  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
+  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functional, sourceSets.integrationTest]
   reportsDir = file("$project.buildDir/reports/pmd")
   ruleSetFiles = files("config/pmd/ruleset.xml")
 }
@@ -162,15 +165,14 @@ dependencies {
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit
   testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: versions.junit
   testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit
+  testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.6'
 
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 
   integrationTestCompile sourceSets.main.runtimeClasspath
   integrationTestCompile sourceSets.test.runtimeClasspath
 
-  functionalTestCompile sourceSets.main.runtimeClasspath
-
-  smokeTestCompile sourceSets.main.runtimeClasspath
+  functionalCompile sourceSets.main.runtimeClasspath
 }
 
 mainClassName = 'uk.gov.hmcts.reform.amapi.Application'
