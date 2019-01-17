@@ -8,11 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.get;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class HealthCheckTest {
 
-    private static final Logger log = LoggerFactory.getLogger(HealthCheckTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HealthCheckTest.class);
 
     @Before
     public void before() {
@@ -23,7 +24,7 @@ public class HealthCheckTest {
 
         RestAssured.baseURI = appUrl;
         RestAssured.useRelaxedHTTPSValidation();
-        log.info("Base Url set to: " + RestAssured.baseURI);
+        LOGGER.info("Base Url set to: " + RestAssured.baseURI);
     }
 
     @Test
@@ -32,5 +33,7 @@ public class HealthCheckTest {
         get("/health")
             .then().statusCode(200)
             .and().body("status", equalTo("UP"));
+        assertThat(2).isGreaterThan(1);
+
     }
 }
