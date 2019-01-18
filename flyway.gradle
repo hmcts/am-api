@@ -1,0 +1,27 @@
+configurations {
+    flyway
+}
+//
+////loading properties file.
+//Properties flywayProps = new Properties()
+//flywayProps.load(new FileInputStream("$projectDir/src/main/resources/flyway.properties"))
+//
+//task migratePostgresDatabase(type: JavaExec) {
+//    group = "flyway"
+//
+//    classpath sourceSets.main.runtimeClasspath
+//    classpath configurations.liquibase
+//    main = "liquibase.integration.commandline.Main"
+//
+//    def urlString = project.hasProperty("dburl") ? "jdbc:postgresql://$dburl" : flywayProps.getProperty('url')
+//    def user = project.hasProperty("flyway.user") ? "${rootProject.properties['flyway.user']}" : flywayProps.getProperty('username')
+//    def password = project.hasProperty("flyway.password") ? "${rootProject.properties['flyway.password']}" : flywayProps.getProperty('password')
+//
+//    args "--changeLogFile=./src/main/resources/db/db-changelog.yaml"
+//    args "--username=$user"
+//    args "--password=$password"
+//    args "--url=$urlString"
+//    args "--driver=" + flywayProps.getProperty('driver')
+//    args "update"
+//}
+

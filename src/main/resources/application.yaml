@@ -6,17 +6,20 @@ management:
     web:
       base-path: /
 
+flyway:
+  enabled: ${ENABLE_DB_MIGRATE_IN_SERVICE:true}
+
 #If you use a database then uncomment below lines and update db properties accordingly
 spring:
   application:
     name: Access Management
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}${DB_OPTIONS:}
-#    username: ${DB_USER_NAME}
-#    password: ${DB_PASSWORD}
-#    properties:
-#      charSet: UTF-8
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${AM_API_DB_HOST:localhost}:${AM_API_DB_PORT:5432}/${AM_API_DB_NAME:am}${AM_API_DB_CONNECTION_OPTIONS:?}
+    username: ${AM_API_DB_USERNAME:amuser}
+    password: ${AM_API_DB_PASSWORD:ampass}
+    properties:
+      charSet: UTF-8
 #    hikari:
 #      minimumIdle: 2
 #      maximumPoolSize: 10
