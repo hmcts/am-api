@@ -26,6 +26,10 @@ variable "capacity" {
   default = "1"
 }
 
+variable "instance_size" {
+  default = "I1"
+}
+
 variable "common_tags" {
   type = "map"
 }

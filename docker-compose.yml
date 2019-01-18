@@ -7,7 +7,7 @@ services:
     networks:
       - am-api-network
     ports:
-      - "5432:5432"
+      - "7654:5432"
     environment:
       - POSTGRES_USER=amuser
       - POSTGRES_PASSWORD=ampass
