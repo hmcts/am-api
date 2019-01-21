@@ -7,6 +7,7 @@ locals {
 
   // Shared Resources
   vaultName = "${var.raw_product}-${local.envInUse}"
+  sharedResourceGroup = "${var.raw_product}-${local.envInUse}"
 }
 
 module "am-api" {
