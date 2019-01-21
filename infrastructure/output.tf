@@ -7,5 +7,5 @@ output "vaultName" {
 }
 
 output "shared_vault_uri" {
-  value = "${data.azurerm_key_vault.snl-shared-vault.vault_uri}"
+  value = "${data.azurerm_key_vault.am-shared-vault.vault_uri}"
 }
