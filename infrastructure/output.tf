@@ -1,5 +1,5 @@
 output "microserviceName" {
-  value = "${var.component}"
+  value = "${local.app_full_name}"
 }
 
 output "vaultName" {
