@@ -109,7 +109,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 # region shared Azure Key Vault
-data "azurerm_key_vault" "snl-shared-vault" {
+data "azurerm_key_vault" "am-shared-vault" {
   name = "${local.vaultName}"
   resource_group_name = "${local.sharedResourceGroup}"
 }
