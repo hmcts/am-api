@@ -2,8 +2,11 @@ provider "azurerm" {}
 
 locals {
   ase_name               = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
+  envInUse = "${(var.env == "preview" || var.env == "spreview") ? "aat" : var.env}"
   shortEnv = "${(var.env == "preview" || var.env == "spreview") ? var.deployment_namespace : var.env}"
 
+  // Shared Resources
+  vaultName = "${var.raw_product}-${local.envInUse}"
 }
 
 module "am-api" {
@@ -98,3 +101,11 @@ resource "azurerm_resource_group" "rg" {
       map("lastUpdated", "${timestamp()}")
       )}"
 }
+
+# region shared Azure Key Vault
+data "azurerm_key_vault" "am-api-vault" {
+  name = "${local.vaultName}"
+  resource_group_name = "${azurerm_resource_group.rg.name}"
+}
+
+# endregion
