@@ -200,7 +200,9 @@ flyway {
 
 task migratePostgresDatabase(type: org.flywaydb.gradle.task.FlywayMigrateTask) {
   baselineOnMigrate = true
+  project.logger.lifecycle("does it have dbUrl: " + project.hasProperty("dburl"))
   if (project.hasProperty("dburl")) {
+    project.logger.lifecycle("dbUrl: " + dburl)
     url = "jdbc:postgresql://${dburl}"
   }
 }
