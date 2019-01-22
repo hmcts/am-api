@@ -15,13 +15,18 @@ The application exposes health endpoint (http://localhost:2703/health) and metri
 
 Located in `./bin/init.sh`. Simply run and follow the explanation how to execute it.
 
-## Notes
-
-Since Spring Boot 2.1 bean overriding is disabled. If you want to enable it you will need to set `spring.main.allow-bean-definition-overriding` to `true`.
-
-JUnit 5 is now enabled by default in the project. Please refrain from using JUnit4 and use the next generation
-
 ## Building and deploying the application
+
+### Working with am-lib locally
+
+Firstly you have to build and release am-lib:
+
+go to am-lib project folder and run
+
+```bash
+ ./gradlew publishToMavenLocal
+```
+Then just restart am-api service and it should work with newly published am-lib.
 
 ### Building the application
 
