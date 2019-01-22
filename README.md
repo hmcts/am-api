@@ -8,7 +8,6 @@ Access management web service
 
 ## What's inside
 
-
 The application exposes health endpoint (http://localhost:2703/health) and metrics endpoint
 (http://localhost:2703/metrics).
 
@@ -102,8 +101,18 @@ docker images
 
 docker image rm <image-id>
 ```
-
 There is no need to remove postgres and java or similar core images.
+
+## Flyway migration (pipeline)
+`build.gradle` contains a task `migratePostgresDatabase` which is used by the Jenkins pipeline to run the migrations, for more details search HMCTS pipeline related repos.
+
+## Flyway migration (locally)
+To run migration locally, first start postgres instance, for example local docker attached to the project `docker-compose up am-api-db`.
+Next run flywayMigrate task, `./gradlew flywayMigrate`.
+
+### Customizing flyway migration (locally)
+When connection to a different database is needed (for migrations) update in `build.gradle` file, task `flyway` with proper connection details. https://flywaydb.org/documentation/gradle/migrate - for more details
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
