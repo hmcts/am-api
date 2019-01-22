@@ -192,7 +192,7 @@ bootJar {
 
 //local flyway settings
 flyway {
-  url = 'jdbc:postgresql://localhost:5432/am'
+  url = 'jdbc:postgresql://localhost:7654/am'
   user = 'amuser'
   password = 'ampass'
   locations = ['classpath:uk.gov.hmcts.reform.amlib.db.migration']
@@ -200,9 +200,8 @@ flyway {
 
 task migratePostgresDatabase(type: org.flywaydb.gradle.task.FlywayMigrateTask) {
   baselineOnMigrate = true
-  project.logger.lifecycle("does it have dbUrl: " + project.hasProperty("dburl"))
+  project.logger.lifecycle("Does it have dbUrl: " + project.hasProperty("dburl"))
   if (project.hasProperty("dburl")) {
-    project.logger.lifecycle("dbUrl: " + dburl)
     url = "jdbc:postgresql://${dburl}"
   }
 }
