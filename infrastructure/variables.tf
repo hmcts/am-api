@@ -73,3 +73,12 @@ variable "deployment_namespace" {
 variable "external_host_name" {
   default = ""
 }
+
+variable "asp_rg" {
+  default = ""
+}
+
+variable "asp_name" {
+  default = ""
+}
+
