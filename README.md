@@ -22,6 +22,8 @@ Located in `./bin/init.sh`. Simply run and follow the explanation how to execute
 
 Firstly you have to build and release am-lib:
 
+go to am-lib project folder and run
+
 ```bash
  ./gradlew publishToMavenLocal
 ```
