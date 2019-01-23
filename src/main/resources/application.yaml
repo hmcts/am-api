@@ -1,0 +1,33 @@
+server:
+  port: 2703
+
+management:
+  endpoints:
+    web:
+      base-path: /
+
+#If you use a database then uncomment below lines and update db properties accordingly
+spring:
+  application:
+    name: Access Management
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${AM_DB_HOST:localhost}:${AM_DB_PORT:5433}/${AM_DB_NAME:am}${AM_DB_PARAMS:}
+    username: ${AM_DB_USERNAME:amuser}
+    password: ${AM_DB_PASSWORD:ampass}
+    properties:
+      charSet: UTF-8
+#    hikari:
+#      minimumIdle: 2
+#      maximumPoolSize: 10
+#      idleTimeout: 10000
+#      poolName: {to-be-defined}HikariCP
+#      maxLifetime: 7200000
+#      connectionTimeout: 30000
+#  jpa:
+#    properties:
+#      hibernate:
+#        jdbc:
+#          lob:
+#            # silence the 'wall-of-text' - unnecessary exception throw about blob types
+#            non_contextual_creation: true
