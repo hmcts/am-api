@@ -8,7 +8,6 @@ Access management web service
 
 ## What's inside
 
-
 The application exposes health endpoint (http://localhost:2703/health) and metrics endpoint
 (http://localhost:2703/metrics).
 
@@ -16,13 +15,18 @@ The application exposes health endpoint (http://localhost:2703/health) and metri
 
 Located in `./bin/init.sh`. Simply run and follow the explanation how to execute it.
 
-## Notes
-
-Since Spring Boot 2.1 bean overriding is disabled. If you want to enable it you will need to set `spring.main.allow-bean-definition-overriding` to `true`.
-
-JUnit 5 is now enabled by default in the project. Please refrain from using JUnit4 and use the next generation
-
 ## Building and deploying the application
+
+### Working with am-lib locally
+
+Firstly you have to build and release am-lib:
+
+go to am-lib project folder and run
+
+```bash
+ ./gradlew publishToMavenLocal
+```
+Then just restart am-api service and it should work with newly published am-lib.
 
 ### Building the application
 
@@ -97,8 +101,18 @@ docker images
 
 docker image rm <image-id>
 ```
-
 There is no need to remove postgres and java or similar core images.
+
+## Flyway migration (pipeline)
+`build.gradle` contains a task `migratePostgresDatabase` which is used by the Jenkins pipeline to run the migrations, for more details search HMCTS pipeline related repos.
+
+## Flyway migration (locally)
+To run migration locally, first start postgres instance, for example local docker attached to the project `docker-compose up am-api-db`.
+Next run flywayMigrate task, `./gradlew flywayMigrate`.
+
+### Customizing flyway migration (locally)
+When connection to a different database is needed (for migrations) update in `build.gradle` file, task `flyway` with proper connection details. https://flywaydb.org/documentation/gradle/migrate - for more details
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

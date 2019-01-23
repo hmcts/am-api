@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.amapi.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import uk.gov.hmcts.reform.amlib.DummyService;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -23,6 +24,8 @@ public class RootController {
      */
     @GetMapping("/")
     public ResponseEntity<String> welcome() {
-        return ok("Welcome to AM");
+
+        DummyService dm = new DummyService();
+        return ok(dm.getHello());
     }
 }
