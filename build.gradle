@@ -141,6 +141,9 @@ dependencyCheck {
 
 repositories {
   mavenLocal()
+  maven {
+    url  "https://dl.bintray.com/hmcts/hmcts-maven"
+  }
   jcenter()
 }
 
@@ -163,7 +166,7 @@ dependencies {
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
-//  compile group: 'uk.gov.hmcts.reform', name: 'amlib', version: '0.1.0'
+  compile group: 'uk.gov.hmcts.reform', name: 'amlib', version: '0.0.4', changing: true
 
   compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
 
@@ -195,7 +198,7 @@ flyway {
   url = 'jdbc:postgresql://localhost:7654/am'
   user = 'amuser'
   password = 'ampass'
-  locations = ['classpath:uk.gov.hmcts.reform.amlib.db.migration']
+  locations = ["classpath:uk.gov.hmcts.reform.amlib"]
 }
 
 task migratePostgresDatabase(type: org.flywaydb.gradle.task.FlywayMigrateTask) {
