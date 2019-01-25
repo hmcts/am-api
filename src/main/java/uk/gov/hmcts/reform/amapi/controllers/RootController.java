@@ -36,6 +36,8 @@ public class RootController {
     @GetMapping("/")
     public ResponseEntity<String> welcome() {
         DummyService dm = new DummyService(dbUrl, dbUsername, dbPassword);
-        return ok(dm.getHello());
+
+        String msg = String.format("URL = %s, USER = %s, PASS = %s, %s", dbUrl, dbUsername, dbPassword, dm.getHello());
+        return ok(msg);
     }
 }
