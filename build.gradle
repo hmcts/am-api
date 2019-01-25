@@ -27,7 +27,7 @@ def versions = [
         reformLogging: '3.0.2',
         springBoot: springBoot.class.package.implementationVersion,
         springfoxSwagger: '2.9.2',
-        amLib: '0.0.6'
+        amLib: '0.0.8'
 ]
 
 sourceSets {
@@ -168,7 +168,7 @@ dependencies {
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
 
-  compile group: 'uk.gov.hmcts.reform', name: 'am-lib', version: versions.amLib, changing: true
+  compile group: 'uk.gov.hmcts.reform', name: 'am-lib', version: versions.amLib, changing: true, classifier: 'all'
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.2.RELEASE'
 
   compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
