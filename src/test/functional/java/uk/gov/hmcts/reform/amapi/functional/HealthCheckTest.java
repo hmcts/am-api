@@ -11,21 +11,7 @@ import static io.restassured.RestAssured.get;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class HealthCheckTest {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(HealthCheckTest.class);
-
-    @Before
-    public void before() {
-        String appUrl = System.getenv("TEST_URL");
-        if (appUrl == null) {
-            appUrl = "http://localhost:2703";
-        }
-
-        RestAssured.baseURI = appUrl;
-        RestAssured.useRelaxedHTTPSValidation();
-        LOGGER.info("Base Url set to: " + RestAssured.baseURI);
-    }
+public class HealthCheckTest extends RestAssuredTest {
 
     @Test
     @Category(SmokeTest.class)
