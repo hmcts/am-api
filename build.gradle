@@ -27,7 +27,7 @@ def versions = [
         reformLogging: '3.0.2',
         springBoot: springBoot.class.package.implementationVersion,
         springfoxSwagger: '2.9.2',
-        amLib: '0.0.5'
+        amLib: '0.0.6'
 ]
 
 sourceSets {
