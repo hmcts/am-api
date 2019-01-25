@@ -13,4 +13,5 @@ def component = "am-api"
 
 withNightlyPipeline(type, product, component) {
   enableSlackNotifications('#rpe-build-notices')
+  enableDbMigration()
 }

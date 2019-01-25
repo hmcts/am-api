@@ -36,6 +36,11 @@ services:
       - LOGBACK_REQUIRE_THREAD
       - LOGBACK_REQUIRE_ALERT_LEVEL=false
       - LOGBACK_REQUIRE_ERROR_CODE=false
+      - AM_API_DB_HOST=am-api-db
+      - AM_API_DB_PORT=5432
+      - AM_API_DB_NAME=am
+      - AM_API_DB_USERNAME=amuser
+      - AM_API_DB_PASSWORD=ampass
     ports:
       - 2703:2703
     networks:

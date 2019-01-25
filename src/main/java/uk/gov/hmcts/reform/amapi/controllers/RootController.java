@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.amapi.controllers;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,17 @@ import static org.springframework.http.ResponseEntity.ok;
  * Default endpoints per application.
  */
 @RestController
+@SuppressWarnings("PMD")
 public class RootController {
+
+    @Value("${spring.datasource.url}")
+    private String dbUrl;
+
+    @Value("${spring.datasource.username}")
+    private String dbUsername;
+
+    @Value("${spring.datasource.password}")
+    private String dbPassword;
 
     /**
      * Root GET endpoint.
@@ -24,8 +35,9 @@ public class RootController {
      */
     @GetMapping("/")
     public ResponseEntity<String> welcome() {
+        DummyService dm = new DummyService(dbUrl, dbUsername, dbPassword);
 
-        DummyService dm = new DummyService();
-        return ok(dm.getHello());
+        String msg = String.format("URL = %s, USER = %s, PASS = %s, %s", dbUrl, dbUsername, dbPassword, dm.getHello());
+        return ok(msg);
     }
 }

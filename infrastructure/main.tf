@@ -39,7 +39,7 @@ module "am-api" {
     AM_API_DB_PASSWORD = "${module.postgres-am-api.postgresql_password}"
     AM_API_DB_USERNAME = "${module.postgres-am-api.user_name}"
     AM_API_DB_NAME     = "${module.postgres-am-api.postgresql_database}"
-    AM_API_DB_CONNECTION_OPTIONS = "?ssl"
+    AM_API_DB_CONNECTION_OPTIONS = "?sslmode=require"
 
     ENABLE_DB_MIGRATE_IN_SERVICE = "false"
   }
