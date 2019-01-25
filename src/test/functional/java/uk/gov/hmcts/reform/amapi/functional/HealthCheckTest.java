@@ -1,11 +1,7 @@
 package uk.gov.hmcts.reform.amapi.functional;
 
-import io.restassured.RestAssured;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.get;
 import static org.assertj.core.api.Assertions.assertThat;
