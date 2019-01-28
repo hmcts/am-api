@@ -27,7 +27,8 @@ def versions = [
         reformLogging: '3.0.2',
         springBoot: springBoot.class.package.implementationVersion,
         springfoxSwagger: '2.9.2',
-        amLib: '0.0.8'
+        amLib: '0.0.8',
+        flyway: '5.2.4'
 ]
 
 sourceSets {
@@ -165,7 +166,7 @@ dependencies {
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.2.RELEASE'
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
-  compile "org.flywaydb:flyway-core:5.2.4"
+  compile group: 'org.flywaydb', name: 'flyway-core', version: versions.flyway
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
 
   compile group: 'uk.gov.hmcts.reform', name: 'am-lib', version: versions.amLib, changing: true, classifier: 'all'

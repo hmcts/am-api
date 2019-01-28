@@ -1,11 +1,16 @@
 package uk.gov.hmcts.reform.amapi;
 
 import org.flywaydb.core.Flyway;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class Migrator {
+public class FlywayMigrator {
+
+    private static final Logger logger = LoggerFactory.getLogger(FlywayMigrator.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
@@ -24,6 +29,7 @@ public class Migrator {
 
     public void runMigrations() {
         if (enabled) {
+            logger.info("Migrations starting...");
             Flyway.configure()
                 .dataSource(dbUrl, dbUsername, dbPassword)
                 .locations(locations)
