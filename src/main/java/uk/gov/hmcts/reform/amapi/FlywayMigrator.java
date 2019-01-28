@@ -13,19 +13,19 @@ public class FlywayMigrator {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlywayMigrator.class);
 
     @Value("${spring.datasource.url}")
-    private transient String dbUrl;
+    private String dbUrl;
 
     @Value("${spring.datasource.username}")
-    private transient String dbUsername;
+    private String dbUsername;
 
     @Value("${spring.datasource.password}")
-    private transient String dbPassword;
+    private String dbPassword;
 
     @Value("${spring.flyway.locations}")
-    private transient String[] locations;
+    private String[] locations;
 
     @Value("${spring.flyway.enabled}")
-    private transient boolean enabled;
+    private boolean enabled;
 
     public void runMigrations() {
         if (enabled) {
