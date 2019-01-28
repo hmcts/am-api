@@ -1,17 +1,17 @@
 server:
-  port: 2703
+  port: 2707
 
 management:
   endpoints:
     web:
       base-path: /
 
-flyway:
-  enabled: ${ENABLE_DB_MIGRATE_IN_SERVICE:true}
-
 spring:
   application:
     name: Access Management
+  flyway:
+    enabled: ${ENABLE_DB_MIGRATE_IN_SERVICE:true}
+    locations: "classpath:uk.gov.hmcts.reform.amlib"
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${AM_API_DB_HOST:localhost}:${AM_API_DB_PORT:7654}/${AM_API_DB_NAME:am}${AM_API_DB_CONNECTION_OPTIONS:?}
@@ -19,6 +19,7 @@ spring:
     password: ${AM_API_DB_PASSWORD:ampass}
     properties:
       charSet: UTF-8
+
 #    hikari:
 #      minimumIdle: 2
 #      maximumPoolSize: 10
