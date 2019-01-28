@@ -12,7 +12,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 public class Application implements CommandLineRunner {
 
     @Autowired
-    private FlywayMigrator flywayMigrator;
+    private transient FlywayMigrator flywayMigrator;
 
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);

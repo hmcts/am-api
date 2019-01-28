@@ -10,26 +10,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class FlywayMigrator {
 
-    private static final Logger logger = LoggerFactory.getLogger(FlywayMigrator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FlywayMigrator.class);
 
     @Value("${spring.datasource.url}")
-    private String dbUrl;
+    private transient String dbUrl;
 
     @Value("${spring.datasource.username}")
-    private String dbUsername;
+    private transient String dbUsername;
 
     @Value("${spring.datasource.password}")
-    private String dbPassword;
+    private transient String dbPassword;
 
     @Value("${spring.flyway.locations}")
-    private String[] locations;
+    private transient String[] locations;
 
     @Value("${spring.flyway.enabled}")
-    private boolean enabled;
+    private transient boolean enabled;
 
     public void runMigrations() {
         if (enabled) {
-            logger.info("Migrations starting...");
+            LOGGER.info("Migrations starting...");
             Flyway.configure()
                 .dataSource(dbUrl, dbUsername, dbPassword)
                 .locations(locations)
