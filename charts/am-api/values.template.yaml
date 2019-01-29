@@ -8,7 +8,6 @@ am-api:
     AM_API_DB_NAME: am
     AM_API_DB_USERNAME: amuser
     AM_API_DB_PASSWORD: ampass
-    AM_API_DB_CONNECTION_OPTIONS: ?sslmode=disable
     ENABLE_DB_MIGRATE_IN_SERVICE: true
 
 postgresql:
