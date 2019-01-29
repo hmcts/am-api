@@ -10,3 +10,10 @@ am-api:
     AM_API_DB_PASSWORD: ampass
     AM_API_DB_CONNECTION_OPTIONS: ?sslmode=disable
     ENABLE_DB_MIGRATE_IN_SERVICE: true
+
+postgresql:
+  postgresqlUsername: amuser
+  postgresqlPassword: ampass
+  postgresqlDatabase: am
+  persistence:
+    enabled: false
