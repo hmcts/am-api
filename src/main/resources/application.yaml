@@ -14,7 +14,7 @@ spring:
     locations: "classpath:uk.gov.hmcts.reform.amlib"
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${AM_API_DB_HOST:localhost}:${AM_API_DB_PORT:7654}/${AM_API_DB_NAME:am}${AM_API_DB_CONNECTION_OPTIONS:?}
+    url: jdbc:postgresql://${AM_API_DB_HOST:localhost}:${AM_API_DB_PORT:7654}/${AM_API_DB_NAME:am}${AM_API_DB_CONNECTION_OPTIONS:}
     username: ${AM_API_DB_USERNAME:amuser}
     password: ${AM_API_DB_PASSWORD:ampass}
     properties:
