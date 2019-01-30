@@ -35,6 +35,11 @@ public class RootController {
      */
     @GetMapping("/")
     public ResponseEntity<String> welcome() {
+        return ok("Welcome to AM");
+    }
+
+    @GetMapping("/am")
+    public ResponseEntity<String> amUsage() {
         DummyService dm = new DummyService(dbUrl, dbUsername, dbPassword);
         return ok(dm.getHello());
     }
