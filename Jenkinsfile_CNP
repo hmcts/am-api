@@ -7,7 +7,14 @@ def product = "am"
 def component = "api"
 
 withPipeline(type, product, component) {
-    enableSlackNotifications('#am-master-builds')
+    onMaster {
+      enableSlackNotifications('#am-master-builds')
+    }
+    onPR {
+      // channel won't be used instead the user channel configured here is used:
+      // https://github.com/hmcts/github-slack-user-mappings
+      enableSlackNotifications('#am-pr-builds')
+    }
     enableDbMigration()
     echo env.CHANGE_TITLE
     if (env.CHANGE_TITLE && !env.CHANGE_TITLE.contains('[PREVIEW]')
