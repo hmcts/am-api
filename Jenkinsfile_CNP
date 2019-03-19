@@ -21,7 +21,14 @@ withPipeline(type, product, component) {
     }
 
     before('buildinfra:prod') {
-      currentBuild.description = "Success!"
-      error 'Access management project should not be built on prod environment yet.'
+      echo "Disabling prod build"
+      /* TODO: Enable prod build, this should be done at least 1-2 months before going live
+       We should really evaluate if this should even be disabled, 
+       the cost saving is miniscule compared to:
+       * the life time of the product
+       * the cost of not having a reliably tested setup that works across two environments
+       * the cost and frustration of setting up infrastructure in a rush to meet a go-live deadline
+      */
+      sh "rm -rf infrastructure/"
   }
 }
